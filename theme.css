@@ -92,9 +92,10 @@ body.dark-mode .logo img {
   transform: translateX(38px);
 }
 
-.theme-toggle i {
+.theme-toggle span {
   color: var(--ink, #24332d);
-  font-size: 14px;
+  font-size: 17px;
+  line-height: 1;
   position: relative;
   z-index: 1;
 }

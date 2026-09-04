@@ -406,7 +406,8 @@
           if (existing) {
             existing.quantity += 1;
           } else {
-            cart.push({ name, price, quantity: 1 });
+            const image = button.closest(".food-card").querySelector("img").getAttribute("src");
+            cart.push({ name, price, image, quantity: 1 });
           }
 
           localStorage.setItem("cart", JSON.stringify(cart));

@@ -11,7 +11,7 @@
     isDark ? "Switch to light mode" : "Switch to dark mode",
   );
   toggle.innerHTML =
-    '<span class="sun-icon" aria-hidden="true">&#9733;</span><span class="moon-icon" aria-hidden="true">&#9790;</span>';
+    '<span class="sun-icon" aria-hidden="true">&#9728;</span><span class="moon-icon" aria-hidden="true">&#9790;</span>';
 
   const nav = document.querySelector(".navbar");
   const actions = nav && nav.querySelector(".nav-actions");

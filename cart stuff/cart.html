@@ -98,12 +98,19 @@
         border-bottom: 1px solid var(--line);
         display: grid;
         gap: 20px;
-        grid-template-columns: 1fr auto auto;
+        grid-template-columns: 76px 1fr auto auto auto;
         padding: 22px 0;
       }
       .cart-item h2 {
         font-size: 23px;
         margin: 0 0 5px;
+      }
+      .cart-item-image {
+        background: #dfe8d8 url("../food-placeholder.svg") center/cover no-repeat;
+        border-radius: 4px;
+        height: 76px;
+        object-fit: cover;
+        width: 76px;
       }
       .cart-item p {
         color: var(--muted);
@@ -139,10 +146,17 @@
         text-align: right;
       }
       .remove-button {
+        align-items: center;
+        background: #000;
         border: 0;
-        color: var(--muted);
-        font-size: 12px;
-        padding: 5px 0;
+        border-radius: 4px;
+        color: #fff;
+        display: flex;
+        font-size: 20px;
+        justify-content: center;
+        min-height: 38px;
+        min-width: 38px;
+        padding: 5px;
       }
       .summary {
         margin-left: auto;
@@ -219,19 +233,25 @@
         }
         .cart-item {
           gap: 10px;
-          grid-template-columns: 1fr auto;
+          grid-template-columns: 64px 1fr auto;
+        }
+        .cart-item-image {
+          grid-column: 1;
+          grid-row: 1 / span 2;
+          height: 64px;
+          width: 64px;
+        }
+        .remove-button {
+          grid-column: 3;
+          grid-row: 2;
         }
         .quantity {
-          grid-column: 1;
+          grid-column: 2;
           grid-row: 2;
         }
         .item-total {
-          grid-column: 2;
+          grid-column: 3;
           grid-row: 1;
-        }
-        .remove-button {
-          grid-column: 2;
-          grid-row: 2;
         }
         .summary {
           max-width: none;
@@ -271,6 +291,35 @@
       const orderStorageKey = "cart";
       const legacyOrderStorageKey = "la-brioche-order";
       const cartContent = document.querySelector("#cart-content");
+      const productImages = {
+        "Morning rituals": "../the bat mobile/anna-wohnoutka-uTNAyTrS1SQ-unsplash.jpg",
+        "Garden bowls": "../the bat mobile/ella-olsson-rD3YrnhTmf0-unsplash.jpg",
+        "Sweet finish": "../the bat mobile/mae-mu-kbch-i63YTg-unsplash.jpg",
+        "Morning pastry": "../the bat mobile/anna-wohnoutka-uTNAyTrS1SQ-unsplash.jpg",
+        "Sunrise eggs": "../the bat mobile/ante-samarzija-lsmu0rUhUOk-unsplash.jpg",
+        "House coffee": "../the bat mobile/nathan-dumlao-6VhPY27jdps-unsplash.jpg",
+        "Avocado toast": "../the bat mobile/brooke-lark-HlNcigvUi4Q-unsplash.jpg",
+        "Berry breakfast bowl": "../the bat mobile/ben-kolde-FFqNATH27EM-unsplash.jpg",
+        "Morning brioche": "../the bat mobile/kevin-lehtla-E41Zj6IfUTQ-unsplash.jpg",
+        "Bakery board": "../the bat mobile/anna-wohnoutka-uTNAyTrS1SQ-unsplash.jpg",
+        "Green shakshuka": "../the bat mobile/brooke-lark-nBtmglfY0HU-unsplash.jpg",
+        "Berry cloud cake": "../the bat mobile/mae-mu-kbch-i63YTg-unsplash.jpg",
+        "Cloud pancakes": "../the bat mobile/anh-nguyen-kcA-c3f_3FE-unsplash.jpg",
+        "Brunch club": "../the bat mobile/andy-chilton-oljL3vFlV2g-unsplash.jpg",
+        "Fruit and cream": "../the bat mobile/fatima-akram-uU0Anw-8Vsg-unsplash.jpg",
+        "Market garden bowl": "../the bat mobile/ella-olsson-rD3YrnhTmf0-unsplash.jpg",
+        "Tomato rigatoni": "../the bat mobile/louis-hansel--9CjvlbUGhY-unsplash.jpg",
+        "Herb chicken focaccia": "../the bat mobile/maddi-bazzocco-j3gz0KReZbA-unsplash.jpg",
+        "Golden grain bowl": "../the bat mobile/rachel-park-hrlvr2ZlUNk-unsplash.jpg",
+        "Herb roast plate": "../the bat mobile/joseph-gonzalez-zcUgjyqEwe8-unsplash.jpg",
+        "Market soup": "../the bat mobile/m-grate-pest-1vBFkgwjQtg-unsplash.jpg",
+        "Garden roast": "../the bat mobile/joseph-gonzalez-zcUgjyqEwe8-unsplash.jpg",
+        "Silk road pasta": "../the bat mobile/louis-hansel--9CjvlbUGhY-unsplash.jpg",
+        "Warm chocolate torte": "../the bat mobile/kevin-kelly-PPneSBqfCCU-unsplash.jpg",
+        "Rosemary steak": "../the bat mobile/toa-heftiba-loS68zG8P38-unsplash.jpg",
+        "Coastal catch": "../the bat mobile/lexi-anderson-rnAsJ38qio8-unsplash.jpg",
+        "Wild mushroom risotto": "../the bat mobile/louis-hansel--9CjvlbUGhY-unsplash.jpg",
+      };
 
       function readOrder() {
         try {
@@ -305,6 +354,7 @@
           .map(
             (item, index) => `
           <article class="cart-item">
+            <img class="cart-item-image" src="${item.image || productImages[item.name] || "../food-placeholder.svg"}" alt="${item.name}" />
             <div><h2>${item.name}</h2><p>${item.description || "Made fresh at La Brioche"}</p></div>
             <div class="quantity" aria-label="Quantity for ${item.name}">
               <button type="button" data-action="decrease" data-index="${index}" aria-label="Decrease ${item.name} quantity">−</button>
@@ -312,7 +362,9 @@
               <button type="button" data-action="increase" data-index="${index}" aria-label="Increase ${item.name} quantity">+</button>
             </div>
             <strong class="item-total">$${(money(item.price) * item.quantity).toFixed(2)}</strong>
-            <button class="remove-button" type="button" data-action="remove" data-index="${index}">Remove</button>
+            <button class="remove-button" type="button" data-action="remove" data-index="${index}" aria-label="Remove ${item.name}">
+            <span aria-hidden="true">&#128465;</span>
+            </button>
           </article>
         `,
           )

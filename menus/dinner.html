@@ -166,7 +166,7 @@
         border-bottom: 1px solid var(--line);
         display: grid;
         gap: 22px;
-        grid-template-columns: 110px 1fr auto auto;
+        grid-template-columns: 110px minmax(0, 1fr) 64px 92px;
         padding: 18px 0;
       }
       .dish[hidden] {
@@ -193,6 +193,9 @@
       .price {
         color: var(--orange);
         font-weight: 700;
+        min-width: 52px;
+        text-align: right;
+        justify-self: end;
       }
       .dish .order-button {
         background: var(--ink);
@@ -203,6 +206,8 @@
         font-size: 12px;
         font-weight: 700;
         padding: 9px 12px;
+        text-align: center;
+        width: 92px;
       }
 
       @media (max-width: 680px) {
@@ -222,11 +227,14 @@
           gap: 8px;
         }
         .dish {
-          grid-template-columns: 78px 1fr auto auto;
+          grid-template-columns: 78px minmax(0, 1fr) 56px 80px;
           gap: 14px;
         }
         .dish img {
           width: 78px;
+        }
+        .dish .order-button {
+          width: 80px;
         }
         .dish h3 {
           font-size: 18px;
@@ -344,7 +352,7 @@
             const price = Number(dish.querySelector(".price").textContent.replace("$", ""));
             const existing = cart.find((item) => item.name === name);
             if (existing) existing.quantity += 1;
-            else cart.push({ name, price, quantity: 1 });
+            else cart.push({ name, price, image: dish.querySelector("img").getAttribute("src"), quantity: 1 });
             localStorage.setItem("cart", JSON.stringify(cart));
             button.textContent = "Added";
             setTimeout(() => (button.textContent = "Order"), 900);
