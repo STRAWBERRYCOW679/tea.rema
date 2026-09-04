@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Explore the Menu | La Brioche</title>
+    <link rel="stylesheet" href="../theme.css" />
+    <style>
+      :root {
+        --ink: #24332d;
+        --cream: #fffaf1;
+        --orange: #d66b3d;
+        --sage: #dfe8d8;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--cream);
+        color: var(--ink);
+        font-family: "DM Sans", sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        max-width: 1180px;
+        margin: auto;
+        padding: 0 28px 64px;
+      }
+
+      .navbar {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: 18px 0;
+      }
+
+      .logo {
+        width: 170px;
+      }
+
+      .logo img {
+        display: block;
+        width: 100%;
+      }
+
+      .home-link {
+        color: var(--orange);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .home-link.active-page {
+        border-bottom: 2px solid var(--orange);
+        padding-bottom: 5px;
+      }
+      .nav-actions {
+        align-items: center;
+        display: flex;
+        gap: 24px;
+      }
+
+      .intro {
+        padding: clamp(58px, 10vw, 112px) 0 42px;
+      }
+
+      .eyebrow {
+        color: var(--orange);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        margin: 0 0 16px;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2 {
+        font-family: "Playfair Display", serif;
+      }
+
+      h1 {
+        font-size: clamp(48px, 8vw, 88px);
+        line-height: 0.98;
+        margin: 0;
+        max-width: 700px;
+      }
+
+      .intro p:last-child {
+        color: #66716a;
+        font-size: 17px;
+        line-height: 1.6;
+        margin: 22px 0 0;
+        max-width: 500px;
+      }
+
+      .banner-grid {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .banner {
+        background-position: center;
+        background-size: cover;
+        color: white;
+        display: flex;
+        min-height: 310px;
+        overflow: hidden;
+        padding: 28px;
+        position: relative;
+        transition: transform 180ms ease;
+      }
+
+      .banner::before {
+        background: linear-gradient(
+          180deg,
+          rgba(20, 31, 25, 0.05),
+          rgba(20, 31, 25, 0.88)
+        );
+        content: "";
+        inset: 0;
+        position: absolute;
+      }
+
+      .banner:hover {
+        transform: translateY(-4px);
+      }
+
+      .banner-content {
+        align-self: end;
+        position: relative;
+      }
+
+      .banner h2 {
+        font-size: 38px;
+        margin: 0 0 8px;
+      }
+
+      .banner p {
+        color: #f7dfbd;
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .arrow {
+        color: #f2b27a;
+        font-size: 23px;
+        margin-left: 8px;
+      }
+
+      .breakfast {
+        background-image: url("../the bat mobile/anna-wohnoutka-uTNAyTrS1SQ-unsplash.jpg"), url("../food-placeholder.svg");
+      }
+
+      .brunch {
+        background-image: url("../the bat mobile/brooke-lark-HlNcigvUi4Q-unsplash.jpg"), url("../food-placeholder.svg");
+      }
+
+      .lunch {
+        background-image: url("../the bat mobile/ella-olsson-rD3YrnhTmf0-unsplash.jpg"), url("../food-placeholder.svg");
+      }
+
+      .dinner {
+        background-image: url("../the bat mobile/joseph-gonzalez-fdlZBWIP0aM-unsplash.jpg"), url("../food-placeholder.svg");
+      }
+
+      @media (max-width: 680px) {
+        .page {
+          padding: 0 17px 40px;
+        }
+
+        .logo {
+          width: 140px;
+        }
+
+        .intro {
+          padding-top: 64px;
+        }
+
+        .banner-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .banner {
+          min-height: 250px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="navbar" aria-label="Main navigation">
+        <a class="logo" href="index.html">
+          <img
+            src="../the bat mobile/PQEE1992-removebg-preview.png"
+            alt="La Brioche Cafe and Kitchen"
+          />
+        </a>
+        <div class="nav-actions">
+          <a class="home-link" href="index.html">Home</a>
+          <a class="home-link active-page" href="explore.html" aria-current="page">Explore menus</a>
+          <a class="home-link" href="../cart stuff/cart.html">Cart</a>
+        </div>
+      </nav>
+
+      <header class="intro">
+        <p class="eyebrow">Pull up a chair</p>
+        <h1>Find your<br />favourite moment.</h1>
+        <p>Easy mornings, slow lunches, and everything delicious in between.</p>
+      </header>
+
+      <section class="banner-grid" aria-label="Explore our menus">
+        <a class="banner breakfast" href="../menus/breakfast.html">
+          <span class="banner-content">
+            <h2>
+              Breakfast <span class="arrow" aria-hidden="true">&#8594;</span>
+            </h2>
+            <p>Start bright with coffee, eggs, and warm pastries.</p>
+          </span>
+        </a>
+        <a class="banner brunch" href="../menus/brunch.html">
+          <span class="banner-content">
+            <h2>
+              Brunch <span class="arrow" aria-hidden="true">&#8594;</span>
+            </h2>
+            <p>Take your time over something made to share.</p>
+          </span>
+        </a>
+        <a class="banner lunch" href="../menus/lunch.html">
+          <span class="banner-content">
+            <h2>Lunch <span class="arrow" aria-hidden="true">&#8594;</span></h2>
+            <p>Fresh bowls, generous plates, and a little reset.</p>
+          </span>
+        </a>
+        <a class="banner dinner" href="../menus/dinner.html">
+          <span class="banner-content">
+            <h2>
+              Dinner <span class="arrow" aria-hidden="true">&#8594;</span>
+            </h2>
+            <p>Settle in for comforting food and good conversation.</p>
+          </span>
+        </a>
+      </section>
+    </main>
+  </body>
+  <script src="../theme.js"></script>
+  <script src="../auth-nav.js"></script>
+  <script src="../site-footer.js"></script>
+</html>

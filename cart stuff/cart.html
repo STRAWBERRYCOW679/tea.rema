@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Your Order | La Brioche</title>
+    <link rel="stylesheet" href="../theme.css" />
+    <style>
+      :root {
+        --ink: #24332d;
+        --cream: #fffaf1;
+        --orange: #d66b3d;
+        --line: #ded8c9;
+        --muted: #66716a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--cream);
+        color: var(--ink);
+        font-family: "DM Sans", sans-serif;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .page {
+        max-width: 900px;
+        margin: auto;
+        padding: 0 28px 64px;
+      }
+      .navbar {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: 18px 0;
+      }
+      .logo {
+        width: 170px;
+      }
+      .logo img {
+        display: block;
+        width: 100%;
+      }
+      .back-link {
+        color: var(--orange);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .nav-actions {
+        align-items: center;
+        display: flex;
+        gap: 24px;
+      }
+      .intro {
+        padding: clamp(58px, 10vw, 100px) 0 42px;
+      }
+      .eyebrow {
+        color: var(--orange);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        margin: 0 0 16px;
+        text-transform: uppercase;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Playfair Display", serif;
+      }
+      h1 {
+        font-size: clamp(48px, 8vw, 82px);
+        line-height: 0.98;
+        margin: 0;
+      }
+      .intro p:last-child {
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.6;
+        margin: 22px 0 0;
+      }
+      .cart-content {
+        border-top: 1px solid var(--line);
+      }
+      .cart-item {
+        align-items: center;
+        border-bottom: 1px solid var(--line);
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 1fr auto auto;
+        padding: 22px 0;
+      }
+      .cart-item h2 {
+        font-size: 23px;
+        margin: 0 0 5px;
+      }
+      .cart-item p {
+        color: var(--muted);
+        font-size: 14px;
+        margin: 0;
+      }
+      .quantity {
+        align-items: center;
+        display: flex;
+        gap: 10px;
+      }
+      .quantity button,
+      .remove-button {
+        background: transparent;
+        border: 1px solid var(--line);
+        color: var(--ink);
+        cursor: pointer;
+        font: inherit;
+      }
+      .quantity button {
+        height: 30px;
+        width: 30px;
+      }
+      .quantity button:hover,
+      .remove-button:hover {
+        border-color: var(--orange);
+        color: var(--orange);
+      }
+      .item-total {
+        color: var(--orange);
+        font-weight: 700;
+        min-width: 55px;
+        text-align: right;
+      }
+      .remove-button {
+        border: 0;
+        color: var(--muted);
+        font-size: 12px;
+        padding: 5px 0;
+      }
+      .summary {
+        margin-left: auto;
+        max-width: 320px;
+        padding-top: 30px;
+      }
+      .summary-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 6px 0;
+      }
+      .summary-row.total {
+        border-top: 1px solid var(--line);
+        font-size: 20px;
+        font-weight: 700;
+        margin-top: 10px;
+        padding-top: 16px;
+      }
+      .checkout-button {
+        background: var(--orange);
+        border: 0;
+        color: white;
+        cursor: pointer;
+        display: block;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        margin-top: 22px;
+        padding: 16px 22px;
+        text-align: center;
+        text-transform: uppercase;
+        width: 100%;
+      }
+      .checkout-button:hover {
+        background: #bb542d;
+      }
+      .empty-state {
+        color: var(--muted);
+        padding: 30px 0;
+      }
+      .empty-state a {
+        border-bottom: 1px solid var(--orange);
+        color: var(--orange);
+        display: inline-block;
+        font-weight: 700;
+        margin-top: 10px;
+        padding-bottom: 4px;
+      }
+      .clear-button {
+        background: transparent;
+        border: 0;
+        color: var(--muted);
+        cursor: pointer;
+        display: block;
+        font: inherit;
+        font-size: 12px;
+        margin: 18px 0 0 auto;
+        padding: 0;
+        text-decoration: underline;
+      }
+      .order-message {
+        color: var(--orange);
+        font-size: 14px;
+        margin: 18px 0 0;
+        text-align: right;
+      }
+      @media (max-width: 680px) {
+        .page {
+          padding: 0 17px 40px;
+        }
+        .logo {
+          width: 140px;
+        }
+        .cart-item {
+          gap: 10px;
+          grid-template-columns: 1fr auto;
+        }
+        .quantity {
+          grid-column: 1;
+          grid-row: 2;
+        }
+        .item-total {
+          grid-column: 2;
+          grid-row: 1;
+        }
+        .remove-button {
+          grid-column: 2;
+          grid-row: 2;
+        }
+        .summary {
+          max-width: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="navbar" aria-label="Main navigation">
+        <a class="logo" href="../additional stuff/index.html">
+          <img
+            src="../the bat mobile/PQEE1992-removebg-preview.png"
+            alt="La Brioche Cafe and Kitchen"
+          />
+        </a>
+        <div class="nav-actions">
+          <a class="back-link" href="../additional stuff/index.html">Home</a>
+          <a class="back-link" href="cart.html" aria-current="page">Cart</a>
+        </div>
+      </nav>
+
+      <header class="intro">
+        <p class="eyebrow">Your table, your way</p>
+        <h1>Your order.</h1>
+        <p>Everything you chose, ready when you are.</p>
+      </header>
+
+      <section
+        id="cart-content"
+        class="cart-content"
+        aria-live="polite"
+      ></section>
+    </main>
+
+    <script>
+      const orderStorageKey = "cart";
+      const legacyOrderStorageKey = "la-brioche-order";
+      const cartContent = document.querySelector("#cart-content");
+
+      function readOrder() {
+        try {
+          const savedOrder =
+            localStorage.getItem(orderStorageKey) ||
+            localStorage.getItem(legacyOrderStorageKey) ||
+            "[]";
+          return JSON.parse(savedOrder);
+        } catch {
+          return [];
+        }
+      }
+
+      function saveOrder(order) {
+        localStorage.setItem(orderStorageKey, JSON.stringify(order));
+      }
+
+      function money(value) {
+        return Number.parseFloat(String(value).replace(/[^0-9.]/g, "")) || 0;
+      }
+
+      function renderCart() {
+        const order = readOrder();
+
+        if (!order.length) {
+          cartContent.innerHTML =
+            '<div class="empty-state"><p>Your order is waiting for something delicious.</p><a href="../additional stuff/explore.html">Explore the menus</a></div>';
+          return;
+        }
+
+        const itemMarkup = order
+          .map(
+            (item, index) => `
+          <article class="cart-item">
+            <div><h2>${item.name}</h2><p>${item.description || "Made fresh at La Brioche"}</p></div>
+            <div class="quantity" aria-label="Quantity for ${item.name}">
+              <button type="button" data-action="decrease" data-index="${index}" aria-label="Decrease ${item.name} quantity">−</button>
+              <span>${item.quantity}</span>
+              <button type="button" data-action="increase" data-index="${index}" aria-label="Increase ${item.name} quantity">+</button>
+            </div>
+            <strong class="item-total">$${(money(item.price) * item.quantity).toFixed(2)}</strong>
+            <button class="remove-button" type="button" data-action="remove" data-index="${index}">Remove</button>
+          </article>
+        `,
+          )
+          .join("");
+
+        const subtotal = order.reduce(
+          (total, item) =>
+            total +
+            (Number.parseFloat(String(item.price).replace(/[^0-9.]/g, "")) ||
+              0) *
+              item.quantity,
+          0,
+        );
+        cartContent.innerHTML = `${itemMarkup}
+          <div class="summary">
+            <div class="summary-row"><span>Subtotal</span><strong>$${subtotal.toFixed(2)}</strong></div>
+            <div class="summary-row"><span>Service</span><strong>Included</strong></div>
+            <div class="summary-row total"><span>Total</span><strong>$${subtotal.toFixed(2)}</strong></div>
+            <button class="checkout-button" type="button" data-action="checkout">Place order</button>
+            <button class="clear-button" type="button" data-action="clear">Clear order</button>
+            <p class="order-message" role="status"></p>
+          </div>`;
+      }
+
+      cartContent.addEventListener("click", (event) => {
+        const button = event.target.closest("button[data-action]");
+        if (!button) return;
+
+        const action = button.dataset.action;
+        const order = readOrder();
+        const index = Number(button.dataset.index);
+
+        if (action === "increase") order[index].quantity += 1;
+        if (action === "decrease") order[index].quantity -= 1;
+        if (
+          action === "remove" ||
+          (action === "decrease" && order[index].quantity < 1)
+        )
+          order.splice(index, 1);
+        if (action === "clear") order.length = 0;
+        if (action === "checkout") {
+          button.nextElementSibling.textContent =
+            "Thanks! Your order has been received.";
+          return;
+        }
+
+        saveOrder(order);
+        renderCart();
+      });
+
+      renderCart();
+    </script>
+    <script src="../theme.js"></script>
+    <script src="../auth-nav.js"></script>
+    <script src="../site-footer.js"></script>
+  </body>
+</html>

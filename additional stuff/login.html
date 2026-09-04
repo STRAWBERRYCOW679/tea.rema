@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Log In | La Brioche</title>
+    <link rel="stylesheet" href="../theme.css" />
+    <style>
+      :root {
+        --ink: #24332d;
+        --cream: #fffaf1;
+        --orange: #d66b3d;
+        --line: #ded8c9;
+        --muted: #66716a;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--cream);
+        color: var(--ink);
+        font-family: "DM Sans", sans-serif;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .page {
+        max-width: 900px;
+        margin: auto;
+        padding: 0 28px 64px;
+      }
+      .navbar {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: 18px 0;
+      }
+      .logo {
+        width: 170px;
+      }
+      .logo img {
+        display: block;
+        width: 100%;
+      }
+      .back-link {
+        color: var(--orange);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .nav-actions {
+        align-items: center;
+        display: flex;
+        gap: 24px;
+      }
+      .login-wrap {
+        margin: clamp(70px, 12vw, 130px) auto 0;
+        max-width: 470px;
+      }
+      .eyebrow {
+        color: var(--orange);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        margin: 0 0 16px;
+        text-transform: uppercase;
+      }
+      h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(48px, 8vw, 78px);
+        line-height: 0.98;
+        margin: 0;
+      }
+      .intro {
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 22px 0 34px;
+      }
+      form {
+        border-top: 1px solid var(--line);
+        padding-top: 26px;
+      }
+      label {
+        display: block;
+        font-size: 13px;
+        font-weight: 700;
+        margin: 0 0 8px;
+      }
+      input {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        color: var(--ink);
+        display: block;
+        font: inherit;
+        margin-bottom: 20px;
+        padding: 14px;
+        width: 100%;
+      }
+      input:focus {
+        border-color: var(--orange);
+        outline: 2px solid rgba(214, 107, 61, 0.2);
+      }
+      button {
+        background: var(--orange);
+        border: 0;
+        color: white;
+        cursor: pointer;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        padding: 16px 22px;
+        text-transform: uppercase;
+        width: 100%;
+      }
+      button:hover {
+        background: #bb542d;
+      }
+      .message {
+        color: var(--orange);
+        font-size: 14px;
+        min-height: 22px;
+        margin: 18px 0 0;
+      }
+      .mode-switch {
+        color: var(--muted);
+        font-size: 14px;
+        margin: 24px 0 0;
+        text-align: center;
+      }
+      .mode-switch button {
+        background: transparent;
+        color: var(--orange);
+        display: inline;
+        font-size: 14px;
+        padding: 0;
+        text-transform: none;
+        width: auto;
+      }
+      @media (max-width: 680px) {
+        .page {
+          padding: 0 17px 40px;
+        }
+        .logo {
+          width: 140px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="navbar" aria-label="Main navigation">
+        <a class="logo" href="index.html"
+          ><img
+            src="../the bat mobile/PQEE1992-removebg-preview.png"
+            alt="La Brioche Cafe and Kitchen"
+        /></a>
+        <div class="nav-actions">
+          <a class="back-link" href="index.html">Home</a>
+          <a class="back-link" href="explore.html">Explore menus</a>
+          <a class="back-link" href="../cart stuff/cart.html">Cart</a>
+        </div>
+      </nav>
+      <section class="login-wrap">
+        <p class="eyebrow">Welcome back</p>
+        <h1>Come on in.</h1>
+        <p class="intro" id="form-intro">
+          Log in to keep your favourites close and make ordering easier.
+        </p>
+        <form id="login-form">
+          <label for="email">Email address</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+          />
+          <label for="password">Password</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            minlength="6"
+            autocomplete="current-password"
+            required
+          />
+          <div id="confirm-password-field" hidden>
+            <label for="confirm-password">Confirm password</label>
+            <input
+              id="confirm-password"
+              type="password"
+              autocomplete="new-password"
+              minlength="6"
+            />
+          </div>
+          <button type="submit" id="submit-button">Log in</button>
+          <p class="message" id="login-message" role="alert"></p>
+        </form>
+        <p class="mode-switch">
+          <span id="mode-prompt">New here?</span>
+          <button type="button" id="mode-button">Create an account</button>
+        </p>
+      </section>
+    </main>
+    <script>
+      const form = document.querySelector("#login-form");
+      const message = document.querySelector("#login-message");
+      const confirmPasswordField = document.querySelector(
+        "#confirm-password-field",
+      );
+      const confirmPasswordInput = document.querySelector("#confirm-password");
+      const passwordInput = document.querySelector("#password");
+      const formIntro = document.querySelector("#form-intro");
+      const submitButton = document.querySelector("#submit-button");
+      const modePrompt = document.querySelector("#mode-prompt");
+      const modeButton = document.querySelector("#mode-button");
+      const apiBase = "http://localhost:5000";
+      const profileUrl =
+        window.location.protocol === "file:"
+          ? "../profile.html"
+          : "/profile.html";
+      let createMode = false;
+
+      async function resumeSavedSession() {
+        const token = localStorage.getItem("la-brioche-token");
+        if (!token) return;
+        try {
+          const response = await fetch(`${apiBase}/profile`, {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          if (response.ok) {
+            window.location.replace(profileUrl);
+            return;
+          }
+        } catch (error) {
+          console.error(error);
+        }
+        localStorage.removeItem("la-brioche-token");
+        localStorage.removeItem("la-brioche-user");
+      }
+
+      resumeSavedSession();
+
+      modeButton.addEventListener("click", () => {
+        createMode = !createMode;
+        confirmPasswordField.hidden = !createMode;
+        confirmPasswordInput.required = createMode;
+        submitButton.textContent = createMode ? "Create account" : "Log in";
+        modePrompt.textContent = createMode
+          ? "Already have an account?"
+          : "New here?";
+        modeButton.textContent = createMode ? "Log in" : "Create an account";
+        formIntro.textContent = createMode
+          ? "Create your account to keep your favourites close and order easily."
+          : "Log in to keep your favourites close and make ordering easier.";
+        message.textContent = "";
+        if (!createMode) confirmPasswordInput.value = "";
+      });
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        message.textContent = createMode
+          ? "Creating your account..."
+          : "Signing you in...";
+        if (createMode && confirmPasswordInput.value !== passwordInput.value) {
+          message.textContent = "Incorrect password.";
+          return;
+        }
+        const formData = new FormData(form);
+        formData.delete("confirm-password");
+        try {
+          const response = await fetch(
+            `${apiBase}${createMode ? "/register" : "/login"}`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(Object.fromEntries(formData)),
+            },
+          );
+          const contentType = response.headers.get("content-type") || "";
+          const result = contentType.includes("application/json")
+            ? await response.json()
+            : {};
+          if (!response.ok) {
+            throw new Error(
+              result.error || `The server returned ${response.status}.`,
+            );
+          }
+          localStorage.setItem("la-brioche-token", result.token);
+          localStorage.setItem("la-brioche-user", JSON.stringify(result.user));
+          window.location.replace(profileUrl);
+        } catch (error) {
+          message.textContent =
+            error instanceof TypeError
+              ? "Unable to connect to the La Brioche server. Make sure it is running on port 5000."
+              : error.message;
+          console.error(error);
+        }
+      });
+    </script>
+    <script src="../theme.js"></script>
+    <script src="../site-footer.js"></script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Loading food image">
+  <rect width="800" height="500" fill="#dfe8d8"/>
+  <circle cx="400" cy="235" r="105" fill="#fffaf1" opacity=".8"/>
+  <path d="M315 245c35-65 135-65 170 0-18 45-152 45-170 0Z" fill="#d66b3d" opacity=".7"/>
+  <circle cx="365" cy="232" r="9" fill="#24332d" opacity=".6"/>
+  <circle cx="435" cy="232" r="9" fill="#24332d" opacity=".6"/>
+  <path d="M365 270c22 18 48 18 70 0" fill="none" stroke="#24332d" stroke-width="8" stroke-linecap="round" opacity=".6"/>
+  <text x="400" y="410" fill="#24332d" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" opacity=".7">Loading...</text>
+</svg>

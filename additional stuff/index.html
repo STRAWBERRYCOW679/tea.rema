@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+      integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../theme.css" />
+    <title>La Brioche | Cafe & Kitchen</title>
+    <style>
+      :root {
+        --ink: #24332d;
+        --cream: #fffaf1;
+        --orange: #d66b3d;
+        --sage: #dfe8d8;
+        --line: #ded8c9;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--cream);
+        font-family: "DM Sans", sans-serif;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .container {
+        max-width: 1180px;
+        margin: auto;
+        padding: 0 28px 64px;
+      }
+      .navbar {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: 18px 0;
+      }
+      .nav-logo img {
+        display: block;
+        height: auto;
+        width: 170px;
+      }
+      .nav-links {
+        align-items: center;
+        display: flex;
+        gap: 30px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .nav-links a {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .nav-links a:hover {
+        color: var(--orange);
+      }
+      .nav-links a.active-page {
+        border-bottom: 2px solid var(--orange);
+        color: var(--orange);
+        padding-bottom: 5px;
+      }
+      .cart-link {
+        align-items: center;
+        display: flex;
+        gap: 7px;
+      }
+      .cart-badge {
+        align-items: center;
+        background: var(--orange);
+        border-radius: 50%;
+        color: white;
+        display: inline-flex;
+        font-size: 11px;
+        height: 21px;
+        justify-content: center;
+        width: 21px;
+      }
+      .hero {
+        background:
+          linear-gradient(
+            90deg,
+            rgba(23, 35, 28, 0.91) 0%,
+            rgba(23, 35, 28, 0.65) 47%,
+            rgba(23, 35, 28, 0.12) 100%
+          ),
+          url("../the bat mobile/alexander-startsev-ndNw_6QGR_c-unsplash.jpg")
+            center/cover;
+        border-radius: 6px;
+        color: white;
+        min-height: 470px;
+        padding: clamp(44px, 8vw, 96px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .eyebrow {
+        color: #f2b27a;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        margin: 0 0 16px;
+        text-transform: uppercase;
+      }
+      h1,
+      h2 {
+        font-family: "Playfair Display", serif;
+      }
+      h1 {
+        font-size: clamp(46px, 7vw, 84px);
+        line-height: 0.98;
+        margin: 0;
+        max-width: 620px;
+      }
+      .hero p {
+        color: #f7dfbd;
+        font-size: 18px;
+        line-height: 1.6;
+        margin: 22px 0 28px;
+        max-width: 440px;
+      }
+      .button {
+        background: var(--orange);
+        border-radius: 3px;
+        color: white;
+        display: inline-block;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        padding: 15px 22px;
+        text-transform: uppercase;
+        width: fit-content;
+      }
+      .button:hover {
+        background: #bb542d;
+      }
+      .section-heading {
+        align-items: end;
+        display: flex;
+        justify-content: space-between;
+        margin: 64px 0 22px;
+      }
+      .section-heading h2 {
+        font-size: 34px;
+        margin: 0;
+      }
+      .section-heading a {
+        border-bottom: 1px solid var(--orange);
+        color: var(--orange);
+        font-size: 13px;
+        font-weight: 700;
+        padding-bottom: 4px;
+      }
+      .discounts {
+        align-items: center;
+        background: var(--sage);
+        display: flex;
+        gap: 24px;
+        justify-content: space-between;
+        margin-top: 28px;
+        padding: 25px 30px;
+      }
+      .discounts h2 {
+        font-size: 23px;
+        line-height: 1.2;
+        margin: 0;
+        max-width: 620px;
+      }
+      .discounts p {
+        font-size: 13px;
+        margin: 0;
+      }
+      .recommended-grid {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .food-card {
+        background: white;
+        border: 1px solid var(--line);
+      }
+      .food-card img {
+        background: #dfe8d8 url("../food-placeholder.svg") center/cover no-repeat;
+        display: block;
+        height: 205px;
+        object-fit: cover;
+        width: 100%;
+      }
+      .food-card:first-child img {
+        background: #17231c;
+        padding: 14px;
+      }
+      .food-card-content {
+        padding: 18px;
+      }
+      .food-card h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 21px;
+        margin: 0 0 7px;
+      }
+      .food-card p {
+        color: #6c746d;
+        font-size: 13px;
+        margin: 0 0 13px;
+      }
+      .price {
+        color: var(--orange);
+        font-weight: 700;
+      }
+      .food-card-footer {
+        align-items: center;
+        display: flex;
+        gap: 12px;
+        justify-content: space-between;
+      }
+      .order-button {
+        background: var(--ink);
+        border: 0;
+        border-radius: 3px;
+        color: white;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 10px 14px;
+        text-transform: uppercase;
+      }
+      .order-button:hover {
+        background: var(--orange);
+      }
+      @media (max-width: 680px) {
+        .container {
+          padding: 0 17px 40px;
+        }
+        .navbar {
+          align-items: flex-start;
+        }
+        .nav-logo img {
+          width: 140px;
+        }
+        .nav-links {
+          flex-wrap: wrap;
+          gap: 14px 18px;
+          justify-content: flex-end;
+        }
+        .nav-links li:nth-child(2),
+        .nav-links li:nth-child(3) {
+          display: none;
+        }
+        .hero {
+          min-height: 460px;
+          padding: 38px 26px;
+        }
+        .discounts {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 22px;
+        }
+        .recommended-grid {
+          grid-template-columns: 1fr;
+        }
+        .food-card img {
+          height: 220px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <nav class="navbar" aria-label="Main navigation">
+        <a class="nav-logo" href="index.html"
+          ><img
+            src="../the bat mobile/PQEE1992-removebg-preview.png"
+            alt="La Brioche Cafe and Kitchen"
+        /></a>
+        <ul class="nav-links">
+          <li><a class="active-page" href="index.html" aria-current="page">home</a></li>
+          <li><a href="explore.html">explore</a></li>
+          <li>
+            <a class="cart-link" href="../cart stuff/cart.html" aria-label="Shopping cart"
+              ><i class="fas fa-shopping-cart"></i
+              ><span class="cart-badge">0</span></a
+            >
+          </li>
+          <li>
+            <a class="cart-link account-link" href="profile.html" aria-label="Your profile"
+              ><i class="fas fa-user-circle"></i
+            ></a>
+          </li>
+        </ul>
+      </nav>
+      <section class="hero">
+        <p class="eyebrow">Fresh from our kitchen</p>
+        <h1>Good food.<br />Good vibes.</h1>
+        <p>
+          From hearty breakfasts to sweet little moments, there is always
+          something delicious waiting for you.
+        </p>
+        <a class="button" href="explore.html">Explore the menu</a>
+      </section>
+      <section class="discounts" aria-label="Current offer">
+        <div>
+          <p class="eyebrow">A little thank you</p>
+          <h2>Enjoy 15% off every order this September.</h2>
+        </div>
+        <p>Use code <strong>GOODVIBES</strong> at checkout.</p>
+      </section>
+      <section class="recommended" aria-labelledby="recommended-title">
+        <div class="section-heading">
+          <h2 id="recommended-title">Made for you</h2>
+          <a href="explore.html">See the full menu</a>
+        </div>
+        <div class="recommended-grid">
+          <article class="food-card">
+            <img
+              loading="lazy"
+              decoding="async"
+              src="../the bat mobile/anna-wohnoutka-uTNAyTrS1SQ-unsplash.jpg"
+              alt="Fresh pastry and coffee"
+            />
+            <div class="food-card-content">
+              <h3>Morning rituals</h3>
+              <p>Golden pastries and coffee to start the day gently.</p>
+              <div class="food-card-footer">
+                <span class="price">$8.50</span>
+                <button class="order-button" data-name="Morning rituals" data-price="8.50">
+                  Order
+                </button>
+              </div>
+            </div>
+          </article>
+          <article class="food-card">
+            <img
+              loading="lazy"
+              decoding="async"
+              src="../the bat mobile/ella-olsson-rD3YrnhTmf0-unsplash.jpg"
+              alt="Bright, fresh salad bowl"
+            />
+            <div class="food-card-content">
+              <h3>Garden bowls</h3>
+              <p>Colorful, crisp, and full of good things.</p>
+              <div class="food-card-footer">
+                <span class="price">$12.00</span>
+                <button class="order-button" data-name="Garden bowls" data-price="12.00">
+                  Order
+                </button>
+              </div>
+            </div>
+          </article>
+          <article class="food-card">
+            <img
+              loading="lazy"
+              decoding="async"
+              src="../the bat mobile/mae-mu-kbch-i63YTg-unsplash.jpg"
+              alt="Slice of homemade cake"
+            />
+            <div class="food-card-content">
+              <h3>Sweet finish</h3>
+              <p>Homemade cakes for sharing, celebrating, or keeping.</p>
+              <div class="food-card-footer">
+                <span class="price">$6.00</span>
+                <button class="order-button" data-name="Sweet finish" data-price="6.00">
+                  Order
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+    <script>
+      const buttons = document.querySelectorAll(".order-button");
+      const badge = document.querySelector(".cart-badge");
+      let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+      function updateBadge() {
+        badge.textContent = cart.reduce(
+          (total, item) => total + item.quantity,
+          0
+        );
+      }
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const name = button.dataset.name;
+          const price = Number(button.dataset.price);
+          const existing = cart.find((item) => item.name === name);
+
+          if (existing) {
+            existing.quantity += 1;
+          } else {
+            cart.push({ name, price, quantity: 1 });
+          }
+
+          localStorage.setItem("cart", JSON.stringify(cart));
+          updateBadge();
+          button.textContent = "Added";
+          setTimeout(() => (button.textContent = "Order"), 900);
+        });
+      });
+
+      updateBadge();
+    </script>
+    <script src="../theme.js"></script>
+    <script src="../auth-nav.js"></script>
+    <script src="../site-footer.js"></script>
+  </body>
+</html>

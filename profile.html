@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Your Profile | La Brioche</title>
+    <link rel="stylesheet" href="theme.css" />
+    <style>
+      :root {
+        --ink: #24332d;
+        --cream: #fffaf1;
+        --orange: #d66b3d;
+        --line: #ded8c9;
+        --muted: #66716a;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--cream);
+        color: var(--ink);
+        font-family: "DM Sans", sans-serif;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .page {
+        max-width: 900px;
+        margin: auto;
+        padding: 0 28px 64px;
+      }
+      .navbar {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: 18px 0;
+      }
+      .logo {
+        width: 170px;
+      }
+      .logo img {
+        display: block;
+        width: 100%;
+      }
+      .back-link {
+        color: var(--orange);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .nav-actions {
+        align-items: center;
+        display: flex;
+        gap: 24px;
+      }
+      .profile-wrap {
+        margin: clamp(70px, 12vw, 130px) auto 0;
+        max-width: 600px;
+      }
+      .eyebrow {
+        color: var(--orange);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        margin: 0 0 16px;
+        text-transform: uppercase;
+      }
+      h1,
+      h2 {
+        font-family: "Playfair Display", serif;
+      }
+      h1 {
+        font-size: clamp(48px, 8vw, 78px);
+        line-height: 0.98;
+        margin: 0;
+      }
+      .profile-card {
+        border-top: 1px solid var(--line);
+        margin-top: 34px;
+        padding-top: 26px;
+      }
+      .profile-card h2 {
+        font-size: 28px;
+        margin: 0 0 8px;
+      }
+      .profile-card p {
+        color: var(--muted);
+        margin: 0 0 22px;
+      }
+      .profile-picture {
+        align-items: center;
+        display: flex;
+        gap: 18px;
+        margin: 0 0 26px;
+      }
+      .profile-picture img {
+        background: #dfe8d8 url("food-placeholder.svg") center/cover no-repeat;
+        border-radius: 50%;
+        height: 86px;
+        object-fit: cover;
+        width: 86px;
+      }
+      .profile-picture input {
+        font: inherit;
+        max-width: 230px;
+      }
+      .actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .button {
+        background: var(--orange);
+        color: white;
+        display: inline-block;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        padding: 15px 22px;
+        text-transform: uppercase;
+      }
+      .button.secondary {
+        background: transparent;
+        border: 1px solid var(--line);
+        color: var(--ink);
+        cursor: pointer;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+      }
+      .button:hover {
+        background: #bb542d;
+        color: white;
+      }
+      .status {
+        color: var(--orange);
+        font-size: 14px;
+        margin-top: 20px;
+      }
+      @media (max-width: 680px) {
+        .page {
+          padding: 0 17px 40px;
+        }
+        .logo {
+          width: 140px;
+        }
+        .actions {
+          flex-direction: column;
+        }
+        .button {
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="navbar" aria-label="Main navigation">
+        <a class="logo" href="additional stuff/index.html"
+          ><img
+            src="the bat mobile/PQEE1992-removebg-preview.png"
+            alt="La Brioche Cafe and Kitchen"
+        /></a>
+        <div class="nav-actions">
+          <a class="back-link" href="additional stuff/index.html">Home</a>
+          <a class="back-link" href="additional stuff/explore.html">Explore menus</a>
+          <a class="back-link" href="cart stuff/cart.html">Cart</a>
+        </div>
+      </nav>
+      <section class="profile-wrap">
+        <p class="eyebrow">Your La Brioche</p>
+        <h1>Good to see you.</h1>
+        <div class="profile-card">
+          <h2 id="profile-name">Loading profile...</h2>
+          <p id="profile-email"></p>
+          <div class="profile-picture">
+            <img id="profile-picture" src="food-placeholder.svg" alt="Your profile picture" />
+            <label>
+              Change profile picture
+              <input id="profile-picture-input" type="file" accept="image/*" />
+            </label>
+          </div>
+          <div class="actions">
+            <a class="button" href="cart stuff/cart.html">View your order</a>
+            <button class="button secondary" id="logout-button" type="button">
+              Log out
+            </button>
+          </div>
+          <p class="status" id="profile-status" role="status"></p>
+        </div>
+      </section>
+    </main>
+    <script>
+      const token = localStorage.getItem("la-brioche-token");
+      const apiBase = "http://localhost:5000";
+      const name = document.querySelector("#profile-name");
+      const email = document.querySelector("#profile-email");
+      const status = document.querySelector("#profile-status");
+      const profilePicture = document.querySelector("#profile-picture");
+      const profilePictureInput = document.querySelector("#profile-picture-input");
+
+      async function loadProfile() {
+        if (!token) {
+          window.location.href = "additional stuff/login.html";
+          return;
+        }
+        try {
+          const response = await fetch(`${apiBase}/profile`, {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          if (!response.ok) throw new Error("Your session has expired.");
+          const result = await response.json();
+          name.textContent = result.user.name;
+          email.textContent = result.user.email;
+          if (result.user.profilePic) profilePicture.src = result.user.profilePic;
+        } catch (error) {
+          localStorage.removeItem("la-brioche-token");
+          localStorage.removeItem("la-brioche-user");
+          window.location.href = "additional stuff/login.html";
+        }
+
+        profilePictureInput.addEventListener("change", () => {
+          const [file] = profilePictureInput.files;
+          if (!file) return;
+          const reader = new FileReader();
+          reader.addEventListener("load", async () => {
+            const response = await fetch(`${apiBase}/profile`, {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify({ profilePic: reader.result }),
+            });
+            if (!response.ok) {
+              status.textContent = "Unable to update your profile picture.";
+              return;
+            }
+            const result = await response.json();
+            profilePicture.src = result.user.profilePic;
+            localStorage.setItem("la-brioche-user", JSON.stringify(result.user));
+            status.textContent = "Profile picture updated.";
+          });
+          reader.readAsDataURL(file);
+        });
+      }
+
+      document
+        .querySelector("#logout-button")
+        .addEventListener("click", async () => {
+          await fetch(`${apiBase}/logout`, {
+            method: "POST",
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          localStorage.removeItem("la-brioche-token");
+          localStorage.removeItem("la-brioche-user");
+          status.textContent = "You are logged out.";
+          window.setTimeout(() => {
+            window.location.href = "additional stuff/login.html";
+          }, 500);
+        });
+
+      loadProfile();
+    </script>
+    <script src="theme.js"></script>
+    <script src="auth-nav.js"></script>
+    <script src="site-footer.js"></script>
+  </body>
+</html>
