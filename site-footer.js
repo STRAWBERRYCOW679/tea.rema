@@ -8,7 +8,7 @@
     </div>
     <div>
       <p class="eyebrow">Contact us</p>
-      <p><a href="tel:2347676767667">234+7676767667</a></p>
+      <p><a href="tel:2347676767667">+234-7676767667</a></p>
     </div>
     <div>
       <p class="eyebrow">Terms &amp; Conditions</p>
