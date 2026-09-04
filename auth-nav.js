@@ -23,7 +23,7 @@
   }
 
   function showLogin() {
-    accountLink.href = `${folderPrefix}additional stuff/login.html`;
+    accountLink.href = `${folderPrefix}login.html`;
     accountLink.setAttribute("aria-label", "Log in or create an account");
     accountLink.innerHTML = "Log in";
   }

@@ -10,7 +10,7 @@
       rel="stylesheet"
     />
     <title>Log In | La Brioche</title>
-    <link rel="stylesheet" href="../theme.css" />
+    <link rel="stylesheet" href="theme.css" />
     <style>
       :root {
         --ink: #24332d;
@@ -163,13 +163,13 @@
       <nav class="navbar" aria-label="Main navigation">
         <a class="logo" href="index.html"
           ><img
-            src="../the bat mobile/PQEE1992-removebg-preview.png"
+            src="the bat mobile/PQEE1992-removebg-preview.png"
             alt="La Brioche Cafe and Kitchen"
         /></a>
         <div class="nav-actions">
           <a class="back-link" href="index.html">Home</a>
           <a class="back-link" href="explore.html">Explore menus</a>
-          <a class="back-link" href="../cart stuff/cart.html">Cart</a>
+          <a class="back-link" href="cart stuff/cart.html">Cart</a>
         </div>
       </nav>
       <section class="login-wrap">
@@ -227,10 +227,7 @@
       const modePrompt = document.querySelector("#mode-prompt");
       const modeButton = document.querySelector("#mode-button");
       const apiBase = "http://localhost:5000";
-      const profileUrl =
-        window.location.protocol === "file:"
-          ? "../profile.html"
-          : "/profile.html";
+      const profileUrl = "profile.html";
       let createMode = false;
 
       async function resumeSavedSession() {
@@ -310,7 +307,7 @@
         }
       });
     </script>
-    <script src="../theme.js"></script>
-    <script src="../site-footer.js"></script>
+    <script src="theme.js"></script>
+    <script src="site-footer.js"></script>
   </body>
 </html>

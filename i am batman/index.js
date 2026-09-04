@@ -44,6 +44,9 @@ server.use((req, res, next) => {
 });
 
 server.use(express.json({ limit: "2mb" }));
+server.get("/additional stuff/index.html", function (req, res) {
+    return res.redirect(301, "/index.html");
+});
 server.use(express.static(projectRoot));
 
 server.get("/", function (req, res) {
